@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar color="hcolor">
+    <ion-title>Group Members</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-searchbar [(ngModel)]="searchstring" (input)="searchuser($event)"
+                  placeholder="Search">
+  </ion-searchbar>
+<ion-list no-lines>
+    <ion-list-header>
+        Swipe left to Remove Member
+      </ion-list-header>
+  <ion-item-sliding *ngFor="let key of groupmembers">
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="{{key.photoURL}}">
+      </ion-avatar>
+      <h2>{{key.displayName}}</h2>
+    </ion-item>
+    <ion-item-options slide="left">
+      <button ion-button color="danger" (click)="removemember(key)">
+        <ion-icon name="trash"></ion-icon>
+        Remove
+      </button>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-list>
+</ion-content>
